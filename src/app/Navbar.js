@@ -22,18 +22,8 @@ export const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to="/" className="nav-link active" aria-current="page">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link to="/config" className="nav-link">
                 Config
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/login" className="nav-link">
-                login
               </Link>
             </li>
           </ul>
