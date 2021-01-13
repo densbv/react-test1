@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Navbar } from "./app/Navbar";
 import { Login } from "./features/Login";
-import { Config } from "./features/Config";
+import { UserList } from "./features/users/UserList";
 import { Dashboard } from "./features/Dashboard";
 import useToken from "./app/useToken";
 
@@ -22,8 +22,8 @@ function App() {
           <Route exact path="/">
             <Dashboard />
           </Route>
-          <Route exact path="/Config">
-            <Config />
+          <Route exact path="/users">
+            <UserList />
           </Route>
         </Switch>
       </div>
