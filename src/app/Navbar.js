@@ -22,8 +22,8 @@ export const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to="/config" className="nav-link">
-                Config
+              <Link to="/users" className="nav-link">
+                Users
               </Link>
             </li>
           </ul>
