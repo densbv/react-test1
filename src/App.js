@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navbar } from "./app/Navbar";
 import { Login } from "./features/Login";
 import { Config } from "./features/Config";
-import { Dashboard } from "@material-ui/icons";
+import { Dashboard } from "./features/Dashboard";
 
 function App() {
   const [token, setToken] = useState();
