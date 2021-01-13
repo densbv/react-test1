@@ -24,6 +24,8 @@ function App() {
             )}
           />
           <Redirect to="/" />
+          <Route exact path="/login" />
+          <Route exact path="/config" />
         </Switch>
       </div>
     </Router>

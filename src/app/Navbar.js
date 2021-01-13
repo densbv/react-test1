@@ -27,22 +27,13 @@ export const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="#" className="nav-link">
-                Features
+              <Link to="/config" className="nav-link">
+                Config
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="#" className="nav-link">
-                Pricing
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="#"
-                className="nav-link disabled"
-                tabIndex="-1"
-                aria-disabled="true"
-              >
-                Disabled
+              <Link to="/login" className="nav-link">
+                login
               </Link>
             </li>
           </ul>
