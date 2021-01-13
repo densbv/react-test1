@@ -13,7 +13,7 @@ export const Login = ({ setToken }) => {
       let rand = getRandomIntInclusive(1, 999999999);
       return { token: username + rand + password };
     };
-    setToken(token);
+    setToken(token());
   };
 
   return (

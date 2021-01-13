@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Navbar } from "./app/Navbar";
 import { Login } from "./features/Login";
 import { Config } from "./features/Config";
 import { Dashboard } from "./features/Dashboard";
+import useToken from "./app/useToken";
 
 function App() {
-  const [token, setToken] = useState();
+  const { token, setToken } = useToken();
 
   if (!token) {
     return <Login setToken={setToken} />;
