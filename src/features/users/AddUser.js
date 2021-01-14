@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
 import { userAdded } from "./usersSlice";
 
 export const AddUser = () => {
@@ -13,14 +12,7 @@ export const AddUser = () => {
   const onAboutChanged = (e) => setAbout(e.target.value);
   const onSaveUserClicked = () => {
     if (name && about) {
-      dispatch(
-        userAdded({
-          id: nanoid(),
-          name,
-          about,
-        })
-      );
-
+      dispatch(userAdded(name, about));
       setName("");
       setAbout("");
     }

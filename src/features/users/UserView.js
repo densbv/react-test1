@@ -18,17 +18,15 @@ export const UserView = ({ match }) => {
   }
 
   return (
-    <div className="card m-3"> 
+    <div className="card m-3">
       <div className="card-header bg-white py-1 px-3">
-      <h5 className="float-start my-2">{user.name}</h5>
-      <Link to={`/users/edit/${user.id}`} className="btn btn-link float-right">
+        <h5 className="float-start my-2 mx-2">{user.name}</h5>
+        <Link to={`/users/edit/${user.id}`} className="btn btn-link">
           Edit
-      </Link>
+        </Link>
       </div>
       <div className="card-body">
-        
         <p>{user.about}</p>
-        
       </div>
     </div>
   );
