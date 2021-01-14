@@ -14,6 +14,7 @@ const usersSlice = createSlice({
         return {
           payload: {
             id: nanoid(),
+            date: new Date().toISOString(),
             name,
             about
           }

@@ -7,7 +7,9 @@ import { AddUser } from "./AddUser";
 export const UserList = () => {
   const users = useSelector((state) => state.users);
 
-  const renderUsers = users.map((user) => (
+  const orderedUsers = users.slice().sort((a, b) => b.date.localeCompare(a.date));
+
+  const renderUsers = orderedUsers.map((user) => (
     <div className="card" key={user.id}>
       <div className="card-body">
         <h5>
