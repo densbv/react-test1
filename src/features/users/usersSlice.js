@@ -9,9 +9,17 @@ const usersSlice = createSlice({
     userAdded(state, action) {
       state.push(action.payload);
     },
+    userUpdated(state, action) {
+      const { id, name, about } = action.payload
+      const existingUser = state.find(user => user.id === id)
+      if (existingUser) {
+        existingUser.name = name
+        existingUser.about = about
+      }
+    }
   },
 });
 
-export const { userAdded } = usersSlice.actions
+export const { userAdded, userUpdated } = usersSlice.actions
 
 export default usersSlice.reducer;

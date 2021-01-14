@@ -4,24 +4,24 @@ import { nanoid } from "@reduxjs/toolkit";
 import { userAdded } from "./usersSlice";
 
 export const AddUser = () => {
-  const [userName, setUserName] = useState("");
+  const [name, setName] = useState("");
   const [about, setAbout] = useState("");
 
   const dispatch = useDispatch();
 
-  const onUserNameChanged = (e) => setUserName(e.target.value);
+  const onnameChanged = (e) => setName(e.target.value);
   const onAboutChanged = (e) => setAbout(e.target.value);
   const onSaveUserClicked = () => {
-    if (userName && about) {
+    if (name && about) {
       dispatch(
         userAdded({
           id: nanoid(),
-          userName,
+          name,
           about,
         })
       );
 
-      setUserName("");
+      setName("");
       setAbout("");
     }
   };
@@ -40,15 +40,15 @@ export const AddUser = () => {
           <div className="card-body">
             <form>
               <div className="mb-3">
-                <label htmlFor="username" className="form-label">
-                  Username
+                <label htmlFor="name" className="form-label">
+                  name
                 </label>
                 <input
-                  onChange={onUserNameChanged}
+                  onChange={onnameChanged}
                   type="text"
                   className="form-control"
-                  id="username"
-                  placeholder="username"
+                  id="name"
+                  placeholder="name"
                 />
               </div>
               <div className="mb-3">
