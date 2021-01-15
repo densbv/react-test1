@@ -1,7 +1,18 @@
-import React from "react"
+import React from "react";
+
+import { Card } from "./Card"
 
 export const Dashboard = () => {
-    return (
-        <h5>Dashboard</h5>
-    )
-}
+  return (
+    <div className="card-body mt-3">
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
+    </div>
+  );
+};
