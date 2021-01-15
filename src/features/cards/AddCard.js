@@ -1,42 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { cardAdded } from "./cardSlice";
+import { cardAdded } from "./cardsSlice";
 
 import { faCity } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { nanoid } from "@reduxjs/toolkit";
 
 const apiUrlRandom = "https://api.publicapis.org/random?auth=null";
 const apiBehance = "https://api.publicapis.org/entries?title=Behance";
 
-export const Card = () => {
-  const [card, setCard] = useState("");
-  const [status, setStatus] = useState("");
-  const [error, setError] = useState("");
-
+export const AddCard = () => {
   const dispatch = useDispatch();
-  const cardStatus = useSelector((state) => state.card.status);
-  const errors = useSelector((state) => state.card.error);
+
+  const [card, setCard] = useState("");
 
   useEffect(() => {
-    fetch(apiUrlRandom)
+    fetch(apiBehance)
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log(result.entries[0])
-          dispatch(
-            cardAdded({
-              card: result.entries[0],
-            })
-          )
+          const card = result.entries[0];
+          dispatch(cardAdded(card));
+          setCard(card);
         },
-        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-        // чтобы не перехватывать исключения из ошибок в самих компонентах.
-        (error) => {
-
-        }
+        (error) => {}
       );
-  });
+  }, [dispatch]);
 
+  console.log(card)
 
   return (
     <div className="col">
@@ -47,7 +38,7 @@ export const Card = () => {
           </button>
         </div>
         <div className="card-body">
-          <h5 className="card-title">Card title</h5>
+          <h5 className="card-title">{card.API}</h5>
           <p className="card-text">
             This is a wider card with supporting text below as a natural lead-in
             to additional content. This content is a little bit longer.
