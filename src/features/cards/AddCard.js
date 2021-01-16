@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { cardAdded } from "./cardsSlice";
 
 import { faCity } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { nanoid } from "@reduxjs/toolkit";
 
-const apiUrlRandom = "https://api.publicapis.org/random?auth=null";
-const apiBehance = "https://api.publicapis.org/entries?title=Behance";
-
-export const AddCard = () => {
+export const AddCard = (props) => {
   const dispatch = useDispatch();
 
   const [card, setCard] = useState("");
 
   useEffect(() => {
-    fetch(apiBehance)
+    fetch(props.apiUrl)
       .then((res) => res.json())
       .then(
         (result) => {
-          const card = result.entries[0];
-          dispatch(cardAdded(card));
-          setCard(card);
+          const dataCard = result.entries[0];
+          dispatch(cardAdded(dataCard));
+          setCard(dataCard);
         },
         (error) => {}
       );
-  }, [dispatch]);
+  }, [props.apiUrl, dispatch]);
 
-  console.log(card)
+  console.log(card);
+
+  const cardStyle = {
+    height: '184px',
+  };
 
   return (
     <div className="col">
@@ -37,15 +37,17 @@ export const AddCard = () => {
             <FontAwesomeIcon icon={faCity} size="lg" />
           </button>
         </div>
-        <div className="card-body">
+        <div className="card-body" style={cardStyle}>
           <h5 className="card-title">{card.API}</h5>
           <p className="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Category: {card.Category} <br />
+            Auth: {card.Auth === "" ? "none" : card.Auth} <br />
+            HTTPS: {card.HTTPS ? "true" : "false"} <br />
+            {card.Link}
           </p>
         </div>
         <div className="card-footer">
-          <small className="text-muted">Last updated 3 mins ago</small>
+          <small className="text-muted">{new Date().toDateString()}</small>
         </div>
       </div>
     </div>
